@@ -40,7 +40,7 @@ contracts/agent-blackbox Casper contract scaffold
 packages/casper/         Casper adapter and payload preparation
 packages/core/           Receipt schema, hashing, validation
 scripts/                 Deployment helper scripts
-docs/                    Architecture and submission notes
+docs/                    Architecture, deployment, and product notes
 tests/                   Node test suite
 ```
 
@@ -54,9 +54,9 @@ npm run dev
 
 Then open `http://localhost:4173`.
 
-## Casper integration plan
+## Casper integration
 
-The first prototype produces receipt hashes locally and prepares Casper runtime arguments. For the buildathon submission, the next integration step is to deploy `contracts/agent-blackbox` on Casper Testnet and wire `packages/casper/blackboxClient.mjs` to a signing flow using Casper SDK or CSPR.click.
+Agent Blackbox produces deterministic receipt hashes locally, prepares Casper runtime arguments, and anchors receipt metadata through the deployed `contracts/agent-blackbox` registry on Casper Testnet.
 
 Required on-chain action:
 
@@ -87,6 +87,6 @@ If you prefer Casper's official build flow, compile the same contract directory 
 5. A hash of that receipt is anchored to Casper.
 6. The dashboard verifies that the visible receipt still matches the on-chain digest.
 
-## Buildathon positioning
+## Positioning
 
 Agent Blackbox is not a yield bot, oracle, or KYC flow. It is accountability infrastructure for the agent economy: a verifiable audit layer that any future Casper AI agent can use before it spends, trades, deploys, or calls paid services.

@@ -7,50 +7,191 @@
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
-    <main class="shell">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">Casper Agentic Buildathon 2026</p>
-          <h1>Agent Blackbox</h1>
+    <main class="page-shell">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="/" aria-label="Agent Blackbox home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Agent Blackbox</span>
+        </a>
+        <div class="nav-links">
+          <a href="#intro">Overview</a>
+          <a href="#how">How it works</a>
+          <a href="#does">What it does</a>
+          <a href="#receipt">Receipt</a>
+          <a id="contractLink" href="#" target="_blank" rel="noreferrer">Contract</a>
         </div>
-        <div class="network-pill" aria-label="Network status">
-          <span class="status-dot"></span>
-          Casper Testnet Ready
-        </div>
-      </header>
+        <a class="login-link" id="receiptTxLink" href="#" target="_blank" rel="noreferrer">View proof</a>
+      </nav>
 
-      <section class="hero">
-        <div>
-          <p class="section-label">Execution Receipt</p>
-          <h2>Every autonomous action gets a verifiable trail.</h2>
-          <p class="lede">
-            Agent Blackbox records policy checks, tool calls, cost, evidence hashes,
-            and Casper deploy references so users can audit why an AI agent acted.
+      <section class="hero" aria-labelledby="pageTitle">
+        <p class="hero-kicker">Powered by Casper - governed end-to-end</p>
+        <h1 id="pageTitle">
+          <span>The Agent Trust OS</span>
+          <span>for Verifiable Actions</span>
+        </h1>
+        <p class="hero-copy">
+          One audit layer for AI agents that call tools, spend tokens, sign
+          transactions, and need a tamper-evident trail users can verify.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-action" href="#how">See how it works</a>
+          <a class="secondary-action" href="#receipt">Open live receipt</a>
+        </div>
+
+        <div class="trust-row" aria-label="Product guarantees">
+          <span>Stack-agnostic</span>
+          <span>Policy-enforced</span>
+          <span>Audit-ready</span>
+          <span>Casper-anchored</span>
+        </div>
+      </section>
+
+      <section class="intro-band" id="intro">
+        <div class="intro-copy">
+          <p class="section-kicker">The state of agent accountability</p>
+          <h2>Agents are becoming operators. The missing layer is proof.</h2>
+          <p>
+            When an agent uses a paid API, touches a wallet, or triggers a
+            contract, a chat transcript is not enough. Agent Blackbox creates a
+            receipt for the action, keeps private evidence off-chain, and anchors
+            the digest on Casper.
           </p>
         </div>
-        <div class="integrity-panel" aria-live="polite">
-          <span class="panel-label">Receipt Integrity</span>
-          <strong id="integrityState">Loading</strong>
-          <span id="receiptHash">Waiting for receipt</span>
+        <div class="intro-visual" aria-label="Agent Blackbox receipt overview">
+          <div class="visual-header">
+            <span>Runtime receipt</span>
+            <strong>Verified</strong>
+          </div>
+          <div class="visual-lanes">
+            <span>Intent</span>
+            <span>Policy</span>
+            <span>Tool call</span>
+            <span>Casper proof</span>
+          </div>
+          <div class="visual-proof">
+            <code>235470a70605...cfac359</code>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-heading" id="how">
+        <p class="section-kicker">How it works</p>
+        <h2>Wrap the agent action, then write the proof.</h2>
+      </section>
+
+      <section class="domain-grid" aria-label="How Agent Blackbox works">
+        <article>
+          <span class="card-number">01</span>
+          <h3>Capture intent</h3>
+          <p>
+            The agent records the user goal, selected model, wallet identity,
+            and the exact action it is about to perform.
+          </p>
+        </article>
+        <article>
+          <span class="card-number">02</span>
+          <h3>Enforce policy</h3>
+          <p>
+            Runtime rules approve or block the action based on tool access,
+            spend limits, risk score, and required human review.
+          </p>
+        </article>
+        <article>
+          <span class="card-number">03</span>
+          <h3>Anchor receipt</h3>
+          <p>
+            The receipt hash and key metadata are submitted to Casper so teams
+            can verify later that the record was not changed.
+          </p>
+        </article>
+      </section>
+
+      <section class="guardrail-section" id="does">
+        <div>
+          <p class="section-kicker">What it does</p>
+          <h2>Autonomy needs a blackbox.</h2>
+          <p>
+            Agent Blackbox gives developers the receipt trail they need before
+            letting autonomous software spend, sign, deploy, or call external tools.
+          </p>
+        </div>
+        <div class="guardrail-grid">
+          <article>
+            <h3>Policy trail</h3>
+            <p>Shows which rule approved the action and the risk score at runtime.</p>
+          </article>
+          <article>
+            <h3>Cost record</h3>
+            <p>Stores the spend amount so paid API and wallet activity stays auditable.</p>
+          </article>
+          <article>
+            <h3>Evidence hashes</h3>
+            <p>Links private evidence without publishing prompts, documents, or raw outputs.</p>
+          </article>
+          <article>
+            <h3>Casper proof</h3>
+            <p>Anchors the receipt digest through a compact smart contract registry.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="proof-stage" id="receipt" aria-label="Live receipt verification">
+        <div class="proof-copy">
+          <p class="section-kicker">Agent receipt control plane</p>
+          <h2>Live verification console</h2>
+          <p>
+            This demo receipt was generated locally and submitted through the
+            deployed Casper Testnet contract.
+          </p>
+        </div>
+
+        <div class="console" aria-live="polite">
+          <div class="console-topbar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="console-grid">
+            <article class="console-card integrity-card">
+              <span class="console-label">Receipt integrity</span>
+              <strong id="integrityState">Loading</strong>
+              <code id="receiptHash">Waiting for receipt</code>
+            </article>
+            <article class="console-card">
+              <span class="console-label">Policy</span>
+              <strong id="policyDecision">-</strong>
+              <small>Runtime decision</small>
+            </article>
+            <article class="console-card">
+              <span class="console-label">Risk</span>
+              <strong id="riskScore">-</strong>
+              <small>Policy score</small>
+            </article>
+            <article class="console-card">
+              <span class="console-label">Tool cost</span>
+              <strong id="toolCost">-</strong>
+              <small>Recorded spend</small>
+            </article>
+          </div>
         </div>
       </section>
 
       <section class="metrics" aria-label="Receipt summary">
         <article>
-          <span>Policy decision</span>
-          <strong id="policyDecision">-</strong>
+          <span>Agent</span>
+          <strong id="agentName">-</strong>
         </article>
         <article>
-          <span>Risk score</span>
-          <strong id="riskScore">-</strong>
-        </article>
-        <article>
-          <span>Tool cost</span>
-          <strong id="toolCost">-</strong>
+          <span>Tool</span>
+          <strong id="toolName">-</strong>
         </article>
         <article>
           <span>Deploy mode</span>
           <strong id="deployMode">-</strong>
+        </article>
+        <article>
+          <span>Network</span>
+          <strong>Casper Testnet</strong>
         </article>
       </section>
 
@@ -58,26 +199,28 @@
         <div class="timeline-panel">
           <div class="panel-header">
             <div>
-              <p class="section-label">Decision Timeline</p>
-              <h3>Agent replay</h3>
+              <p class="section-kicker">Action pipeline</p>
+              <h2>Agent replay</h2>
             </div>
+            <span class="panel-status">4 events</span>
           </div>
           <ol class="timeline" id="timeline"></ol>
         </div>
 
         <aside class="detail-panel">
-          <p class="section-label">Receipt Detail</p>
+          <div class="panel-header compact">
+            <div>
+              <p class="section-kicker">Receipt detail</p>
+              <h2>Evidence map</h2>
+            </div>
+          </div>
           <dl>
             <div>
               <dt>Receipt ID</dt>
               <dd id="receiptId">-</dd>
             </div>
             <div>
-              <dt>Agent</dt>
-              <dd id="agentName">-</dd>
-            </div>
-            <div>
-              <dt>Wallet</dt>
+              <dt>Agent wallet</dt>
               <dd id="agentWallet">-</dd>
             </div>
             <div>
@@ -89,8 +232,8 @@
               <dd id="policyHash">-</dd>
             </div>
             <div>
-              <dt>Tool</dt>
-              <dd id="toolName">-</dd>
+              <dt>Contract hash</dt>
+              <dd id="contractHash">-</dd>
             </div>
           </dl>
         </aside>
@@ -99,8 +242,8 @@
       <section class="payload-panel">
         <div class="panel-header">
           <div>
-            <p class="section-label">Casper Payload</p>
-            <h3>Prepared contract call</h3>
+            <p class="section-kicker">Casper payload</p>
+            <h2>Prepared contract call</h2>
           </div>
           <button id="copyPayload" type="button">Copy JSON</button>
         </div>

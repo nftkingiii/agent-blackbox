@@ -2,7 +2,11 @@ import { writeFile } from "node:fs/promises";
 import { createReceipt, sha256Hex, verifyReceipt } from "../../packages/core/receipt.mjs";
 import { createCasperBlackboxClient } from "../../packages/casper/blackboxClient.mjs";
 
+const DEFAULT_CONTRACT_HASH = "hash-11c55f283a39e492201bf3f4f7e9b76436599b364c0a0fbc385d46fb3d1e5fb8";
+
 const demoReceipt = createReceipt({
+  receiptId: "28f49029-999a-496c-8e64-ce94df16b7bf",
+  timestamp: "2026-07-04T13:54:42.500Z",
   agent: {
     id: "agent-risk-ops-01",
     name: "RiskOps Autopilot",
@@ -56,7 +60,7 @@ const demoReceipt = createReceipt({
 });
 
 const client = createCasperBlackboxClient({
-  contractHash: process.env.AGENT_BLACKBOX_CONTRACT_HASH
+  contractHash: process.env.AGENT_BLACKBOX_CONTRACT_HASH ?? DEFAULT_CONTRACT_HASH
 });
 
 const deployResult = await client.submitReceipt(demoReceipt);

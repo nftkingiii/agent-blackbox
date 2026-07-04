@@ -59,7 +59,7 @@ For deployment from this machine, use one of these options:
 6. Save the resulting contract hash as `AGENT_BLACKBOX_CONTRACT_HASH`.
 7. Run `npm run demo` again so the adapter prepares a real contract-call payload instead of mock mode.
 8. Use `node scripts/prepare-deploy.mjs` to print the `submit_receipt` runtime arguments.
-9. Send the `submit_receipt` deploy and include the deploy hash in the final DoraHacks README.
+9. Send the `submit_receipt` deploy and record the deploy hash in the project README.
 
 ## Current testnet deployment
 

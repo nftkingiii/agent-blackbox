@@ -55,7 +55,7 @@ The dashboard presents the receipt as a replayable timeline:
 3. tool called
 4. receipt anchored
 
-It also shows the prepared Casper payload so judges can see the transaction-producing component.
+It also shows the prepared Casper payload so operators can inspect the transaction-producing component.
 
 ## Next integrations
 

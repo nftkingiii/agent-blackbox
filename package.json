@@ -6,6 +6,7 @@
   "description": "Verifiable execution receipts for autonomous AI agents on Casper.",
   "scripts": {
     "dev": "node apps/web/server.mjs",
+    "build": "npm run demo",
     "demo": "node apps/agent/demo.mjs",
     "test": "node --test tests/*.test.mjs",
     "check": "node --check apps/web/public/app.js && node --check apps/web/server.mjs && node --check apps/agent/demo.mjs && node --check packages/core/receipt.mjs && node --check packages/casper/blackboxClient.mjs && node --check scripts/prepare-deploy.mjs && node --check scripts/deploy-contract.mjs && node --check scripts/submit-receipt.mjs && node --check scripts/derive-casper-key.mjs && node --check scripts/check-transaction.mjs && node --check scripts/get-contract-keys.mjs",
