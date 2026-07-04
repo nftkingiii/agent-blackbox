@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agent Blackbox</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Casper Agentic Buildathon 2026</p>
+          <h1>Agent Blackbox</h1>
+        </div>
+        <div class="network-pill" aria-label="Network status">
+          <span class="status-dot"></span>
+          Casper Testnet Ready
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="section-label">Execution Receipt</p>
+          <h2>Every autonomous action gets a verifiable trail.</h2>
+          <p class="lede">
+            Agent Blackbox records policy checks, tool calls, cost, evidence hashes,
+            and Casper deploy references so users can audit why an AI agent acted.
+          </p>
+        </div>
+        <div class="integrity-panel" aria-live="polite">
+          <span class="panel-label">Receipt Integrity</span>
+          <strong id="integrityState">Loading</strong>
+          <span id="receiptHash">Waiting for receipt</span>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Receipt summary">
+        <article>
+          <span>Policy decision</span>
+          <strong id="policyDecision">-</strong>
+        </article>
+        <article>
+          <span>Risk score</span>
+          <strong id="riskScore">-</strong>
+        </article>
+        <article>
+          <span>Tool cost</span>
+          <strong id="toolCost">-</strong>
+        </article>
+        <article>
+          <span>Deploy mode</span>
+          <strong id="deployMode">-</strong>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <div class="timeline-panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-label">Decision Timeline</p>
+              <h3>Agent replay</h3>
+            </div>
+          </div>
+          <ol class="timeline" id="timeline"></ol>
+        </div>
+
+        <aside class="detail-panel">
+          <p class="section-label">Receipt Detail</p>
+          <dl>
+            <div>
+              <dt>Receipt ID</dt>
+              <dd id="receiptId">-</dd>
+            </div>
+            <div>
+              <dt>Agent</dt>
+              <dd id="agentName">-</dd>
+            </div>
+            <div>
+              <dt>Wallet</dt>
+              <dd id="agentWallet">-</dd>
+            </div>
+            <div>
+              <dt>Intent hash</dt>
+              <dd id="intentHash">-</dd>
+            </div>
+            <div>
+              <dt>Policy hash</dt>
+              <dd id="policyHash">-</dd>
+            </div>
+            <div>
+              <dt>Tool</dt>
+              <dd id="toolName">-</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="payload-panel">
+        <div class="panel-header">
+          <div>
+            <p class="section-label">Casper Payload</p>
+            <h3>Prepared contract call</h3>
+          </div>
+          <button id="copyPayload" type="button">Copy JSON</button>
+        </div>
+        <pre id="payloadJson">Loading...</pre>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+{
+  "receipt": {
+    "version": "agent-blackbox.receipt.v1",
+    "receiptId": "28f49029-999a-496c-8e64-ce94df16b7bf",
+    "timestamp": "2026-07-04T13:54:42.500Z",
+    "agent": {
+      "id": "agent-risk-ops-01",
+      "name": "RiskOps Autopilot",
+      "wallet": "account-hash-demo-agent",
+      "model": "gpt-5-casper-policy-runner"
+    },
+    "task": {
+      "intent": "Call a paid risk API only if the total cost is below 2500000000 motes and record the result for audit.",
+      "intentHash": "accce503a52f4ea35603fa883862c4a2f7b65f13de6553316b9b06bdf1c72461",
+      "user": "account-hash-demo-user"
+    },
+    "policy": {
+      "policyHash": "8c5cef3eb52e433488204b18e9067aba4bce48be58dc1f14e541c7c64175f7bc",
+      "decision": "approved",
+      "rules": [
+        "allowed_tool",
+        "under_single_call_limit",
+        "under_daily_budget"
+      ],
+      "riskScore": 18,
+      "explanation": "The request uses an approved endpoint and stays below the configured single-call threshold."
+    },
+    "toolCall": {
+      "tool": "risk-api",
+      "target": "https://api.example.test/risk-score",
+      "method": "POST",
+      "requestHash": "6b6b0f060b99b66c9475ab5fe90c62506ac44ed0639c64419ff8c0ac99b5e993",
+      "responseHash": "1db8b849c7a360fec2590d3dc7333c71532a46503d1bc074ed8205c2d3fa2be2",
+      "costMotes": 1200000000,
+      "status": "ok"
+    },
+    "chain": {
+      "network": "casper-test",
+      "contractPackageHash": "pending-testnet-deploy",
+      "deployHash": "pending",
+      "blockHash": "pending"
+    },
+    "evidence": [
+      {
+        "label": "policy snapshot",
+        "uri": "ipfs://demo/policy-snapshot.json",
+        "hash": "a53da7ecd629b22584f1a3b2447cd8dd7b800a323431401ad1486f36b2e1c6ec"
+      },
+      {
+        "label": "tool response",
+        "uri": "ipfs://demo/risk-response.json",
+        "hash": "a67c0abce1673818fd0ce042d183c7a2646c33ebc6b463fa73361d2e47e61305"
+      }
+    ],
+    "receiptHash": "235470a706053333103e6c12741c4cfa8e147ab1d0230a1343e075c55cfac359"
+  },
+  "deployResult": {
+    "mode": "prepared",
+    "message": "Connect Casper SDK, CSPR.click, or Casper CLI signing to send this deploy.",
+    "payload": {
+      "network": "casper-test",
+      "nodeUrl": "https://node.testnet.casper.network/rpc",
+      "contractHash": "hash-11c55f283a39e492201bf3f4f7e9b76436599b364c0a0fbc385d46fb3d1e5fb8",
+      "entryPoint": "submit_receipt",
+      "runtimeArgs": {
+        "receipt_id": "28f49029-999a-496c-8e64-ce94df16b7bf",
+        "receipt_hash": "235470a706053333103e6c12741c4cfa8e147ab1d0230a1343e075c55cfac359",
+        "agent_id": "agent-risk-ops-01",
+        "policy_hash": "8c5cef3eb52e433488204b18e9067aba4bce48be58dc1f14e541c7c64175f7bc",
+        "cost_motes": "1200000000",
+        "tool": "risk-api",
+        "decision": "approved",
+        "timestamp": "2026-07-04T13:54:42.500Z"
+      }
+    }
+  },
+  "verification": {
+    "ok": true,
+    "expected": "235470a706053333103e6c12741c4cfa8e147ab1d0230a1343e075c55cfac359",
+    "actual": "235470a706053333103e6c12741c4cfa8e147ab1d0230a1343e075c55cfac359"
+  }
+}
