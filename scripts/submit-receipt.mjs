@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { mnemonicToSeedSync } from "bip39";
-import HDKey from "hdkey";
+import { HDKey } from "@scure/bip32";
 import sdk from "casper-js-sdk";
 
 const {
@@ -96,7 +96,7 @@ async function privateKeyFromStdin(expected) {
   const seed = mnemonicToSeedSync(mnemonic);
   const root = HDKey.fromMasterSeed(seed);
   const child = root.derive("m/44'/506'/0'/0/0");
-  const privateKeyHex = child.privateKey.toString("hex");
+  const privateKeyHex = Buffer.from(child.privateKey).toString("hex");
   const privateKey = PrivateKey.fromHex(privateKeyHex, KeyAlgorithm.SECP256K1);
 
   if (privateKey.publicKey.toHex().toLowerCase() !== expected) {

@@ -1,5 +1,5 @@
 import { mnemonicToSeedSync } from "bip39";
-import HDKey from "hdkey";
+import { HDKey } from "@scure/bip32";
 import { getPublicKey } from "@noble/secp256k1";
 
 const expectedPublicKey = process.argv[2]?.toLowerCase();
