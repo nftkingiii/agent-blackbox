@@ -177,7 +177,8 @@ h1 span {
 
 .primary-action,
 .secondary-action,
-button {
+button,
+.file-button {
   min-height: 46px;
   display: inline-flex;
   align-items: center;
@@ -197,7 +198,9 @@ button {
   color: #ffffff;
 }
 
-.secondary-action {
+.secondary-action,
+.secondary-button,
+.file-button {
   border: 1px solid rgba(7, 12, 20, 0.12);
   background: #ffffff;
   color: var(--ink);
@@ -209,13 +212,16 @@ button:hover {
   transform: translateY(-2px);
 }
 
-.secondary-action:hover {
+.secondary-action:hover,
+.secondary-button:hover,
+.file-button:hover {
   border-color: var(--ink);
   transform: translateY(-2px);
 }
 
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+.file-button:focus-within {
   outline: 3px solid rgba(8, 124, 109, 0.32);
   outline-offset: 2px;
 }
@@ -264,7 +270,8 @@ button:focus-visible {
 .metrics article,
 .timeline-panel,
 .detail-panel,
-.payload-panel {
+.payload-panel,
+.verifier-panel {
   border-radius: 8px;
   box-shadow: var(--shadow);
 }
@@ -275,7 +282,8 @@ button:focus-visible {
 .metrics article,
 .timeline-panel,
 .detail-panel,
-.payload-panel {
+.payload-panel,
+.verifier-panel {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.82);
 }
@@ -300,6 +308,23 @@ button:focus-visible {
   margin-bottom: 0;
   color: var(--muted);
   line-height: 1.68;
+}
+
+.proof-points {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.proof-points li {
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
+  color: #33404d;
+  font-size: 0.92rem;
+  font-weight: 750;
+  line-height: 1.45;
 }
 
 .intro-visual {
@@ -691,8 +716,48 @@ dd {
   border-top: 1px solid var(--line);
 }
 
+.api-message {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid rgba(8, 124, 109, 0.18);
+  border-radius: 8px;
+  background: var(--accent-soft);
+}
+
+.api-message.is-risk {
+  border-color: rgba(255, 96, 79, 0.26);
+  background: #fff0ee;
+}
+
+.api-message .console-label,
 .explorer-panel .console-label {
   margin-bottom: 2px;
+}
+
+.api-message strong {
+  display: block;
+  color: var(--accent-dark);
+  font-size: 1rem;
+}
+
+.api-message.is-risk strong {
+  color: var(--risk);
+}
+
+.api-message p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.explorer-panel p {
+  margin-bottom: 2px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
 }
 
 .explorer-panel a {
@@ -747,6 +812,98 @@ dd {
 
 .payload-panel {
   padding: 22px;
+}
+
+.verifier-panel {
+  margin-top: 18px;
+  padding: 22px;
+}
+
+.verifier-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.75fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.verifier-editor,
+.verifier-result {
+  min-width: 0;
+}
+
+.verifier-editor label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+textarea {
+  width: 100%;
+  min-height: 420px;
+  resize: vertical;
+  border: 1px solid var(--console-line);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--console);
+  color: #d8efe9;
+  font: 0.86rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+textarea:focus {
+  outline: 3px solid rgba(8, 124, 109, 0.28);
+  outline-offset: 2px;
+}
+
+.verifier-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.file-button {
+  position: relative;
+}
+
+#receiptFile {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.verifier-result {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  background: var(--surface-soft);
+}
+
+.verifier-result strong {
+  display: block;
+  color: var(--muted);
+  font-size: 2rem;
+  line-height: 1.05;
+}
+
+.verifier-result strong.is-ok {
+  color: var(--accent-dark);
+}
+
+.verifier-result strong.is-risk {
+  color: var(--risk);
+}
+
+.verifier-result p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 button {
@@ -819,6 +976,10 @@ pre {
     flex-direction: column;
   }
 
+  .verifier-grid {
+    grid-template-columns: 1fr;
+  }
+
   .intro-visual,
   .guardrail-section > div:first-child,
   .proof-copy,
@@ -869,7 +1030,9 @@ pre {
   }
 
   .primary-action,
-  .secondary-action {
+  .secondary-action,
+  .secondary-button,
+  .file-button {
     width: 100%;
   }
 
@@ -878,7 +1041,8 @@ pre {
   .proof-copy,
   .timeline-panel,
   .detail-panel,
-  .payload-panel {
+  .payload-panel,
+  .verifier-panel {
     padding: 22px;
   }
 

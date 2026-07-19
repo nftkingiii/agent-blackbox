@@ -9,6 +9,10 @@ npm run demo
 npm run dev
 ```
 
+The local app now serves both the dashboard and API from `http://localhost:4173`.
+
+For production deployment, use [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md).
+
 ## Contract build
 
 Agent Blackbox uses Casper contract crates that compile cleanly with Casper's generated-template toolchain pin:
@@ -85,6 +89,8 @@ node scripts/get-contract-keys.mjs 020227c032dc0cda3475482a27d86c2ccbd7f3444f7a1
 ## Environment variables
 
 ```text
+RECEIPT_STORE_PATH=/data/receipts.json
+AGENT_BLACKBOX_API_KEY=optional-server-to-server-token
 AGENT_BLACKBOX_CONTRACT_HASH=hash-...
 CSPR_CLOUD_API_KEY=...
 CASPER_NODE_URL=https://node.testnet.casper.network/rpc

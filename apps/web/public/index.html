@@ -20,6 +20,7 @@
           <a href="#how">How it works</a>
           <a href="#does">What it does</a>
           <a href="#receipt">Receipt</a>
+          <a href="#verify">Verify</a>
           <a id="contractLink" href="#" target="_blank" rel="noreferrer">Contract</a>
         </div>
         <a class="login-link" id="receiptTxLink" href="#" target="_blank" rel="noreferrer">View proof</a>
@@ -32,8 +33,8 @@
           <span>for Verifiable Actions</span>
         </h1>
         <p class="hero-copy">
-          One audit layer for AI agents that call tools, spend tokens, sign
-          transactions, and need a tamper-evident trail users can verify.
+          One deployable audit layer for AI agents that call tools, spend tokens,
+          sign transactions, and need a tamper-evident trail users can verify.
         </p>
         <div class="hero-actions">
           <a class="primary-action" href="#how">See how it works</a>
@@ -145,6 +146,12 @@
             This demo receipt was generated locally and submitted through the
             deployed Casper Testnet contract.
           </p>
+          <ul class="proof-points">
+            <li>The receipt body stays off-chain.</li>
+            <li>The backend stores the receipt through the product API.</li>
+            <li>The receipt hash is submitted to Casper Testnet.</li>
+            <li>The explorer links show the contract and sample transactions.</li>
+          </ul>
         </div>
 
         <div class="console" aria-live="polite">
@@ -190,6 +197,10 @@
         <article>
           <span>Deploy mode</span>
           <strong id="deployMode">-</strong>
+        </article>
+        <article>
+          <span>API</span>
+          <strong id="apiStatus">-</strong>
         </article>
         <article>
           <span>Network</span>
@@ -238,8 +249,17 @@
               <dd id="contractHash">-</dd>
             </div>
           </dl>
+          <div class="api-message is-ok" id="apiMessage" aria-live="polite">
+            <span class="console-label">Product API</span>
+            <strong id="apiMessageTitle">Connecting</strong>
+            <p id="apiMessageBody">Loading backend proof configuration.</p>
+          </div>
           <div class="explorer-panel" aria-label="Casper Testnet explorer links">
             <span class="console-label">Testnet explorer</span>
+            <p>
+              These links prove when the registry was installed and when the
+              sample receipt hash was submitted.
+            </p>
             <a id="contractExplorerLink" href="#" target="_blank" rel="noreferrer">
               <span>Contract registry</span>
               <strong id="contractExplorerLabel">Open contract</strong>
@@ -265,6 +285,53 @@
           <button id="copyPayload" type="button">Copy JSON</button>
         </div>
         <pre id="payloadJson">Loading...</pre>
+      </section>
+
+      <section class="verifier-panel" id="verify" aria-labelledby="verifyTitle">
+        <div class="panel-header">
+          <div>
+            <p class="section-kicker">Receipt verifier</p>
+            <h2 id="verifyTitle">Paste a receipt. Detect tampering.</h2>
+          </div>
+          <span class="panel-status">Local hash check</span>
+        </div>
+
+        <div class="verifier-grid">
+          <div class="verifier-editor">
+            <label for="receiptInput">Receipt JSON</label>
+            <textarea id="receiptInput" spellcheck="false" rows="18">Loading receipt...</textarea>
+            <div class="verifier-actions">
+              <button id="verifyReceipt" type="button">Verify receipt</button>
+              <button id="tamperReceipt" class="secondary-button" type="button">Simulate tamper</button>
+              <button id="loadDemoReceipt" class="secondary-button" type="button">Load demo</button>
+              <label class="file-button" for="receiptFile">Upload JSON</label>
+              <input id="receiptFile" type="file" accept="application/json,.json">
+            </div>
+          </div>
+
+          <aside class="verifier-result" aria-live="polite">
+            <span class="console-label">Verification result</span>
+            <strong id="verifierState">Waiting</strong>
+            <p id="verifierSummary">
+              Load the demo receipt or paste your own receipt JSON to recompute
+              its canonical hash.
+            </p>
+            <dl>
+              <div>
+                <dt>Receipt hash</dt>
+                <dd id="verifierExpected">-</dd>
+              </div>
+              <div>
+                <dt>Recomputed hash</dt>
+                <dd id="verifierActual">-</dd>
+              </div>
+              <div>
+                <dt>Casper proof</dt>
+                <dd id="verifierAnchor">-</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
       </section>
     </main>
 

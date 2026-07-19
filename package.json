@@ -4,17 +4,17 @@
   "private": true,
   "type": "module",
   "description": "Verifiable execution receipts for autonomous AI agents on Casper.",
-  "homepage": "https://agent-blackbox-blush.vercel.app/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nftkingiii/agent-blackbox.git"
   },
   "scripts": {
-    "dev": "node apps/web/server.mjs",
+    "dev": "node apps/api/server.mjs",
+    "start": "node apps/api/server.mjs",
     "build": "npm run demo",
     "demo": "node apps/agent/demo.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check apps/web/public/app.js && node --check apps/web/server.mjs && node --check apps/agent/demo.mjs && node --check packages/core/receipt.mjs && node --check packages/casper/blackboxClient.mjs && node --check scripts/prepare-deploy.mjs && node --check scripts/deploy-contract.mjs && node --check scripts/submit-receipt.mjs && node --check scripts/derive-casper-key.mjs && node --check scripts/check-transaction.mjs && node --check scripts/get-contract-keys.mjs",
+    "check": "node --check apps/web/public/app.js && node --check apps/api/server.mjs && node --check apps/api/storage.mjs && node --check apps/web/server.mjs && node --check apps/agent/demo.mjs && node --check packages/core/receipt.mjs && node --check packages/casper/blackboxClient.mjs && node --check scripts/prepare-deploy.mjs && node --check scripts/deploy-contract.mjs && node --check scripts/submit-receipt.mjs && node --check scripts/derive-casper-key.mjs && node --check scripts/check-transaction.mjs && node --check scripts/get-contract-keys.mjs",
     "deploy:contract": "node scripts/deploy-contract.mjs",
     "submit:receipt": "node scripts/submit-receipt.mjs"
   },
