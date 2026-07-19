@@ -44,33 +44,56 @@
 
         <a class="product-preview" href="/console.html" aria-label="Open the Agent Blackbox live receipt console">
           <div class="preview-toolbar">
-            <span class="preview-brand">Receipt console</span>
-            <span class="proof-state"><span class="status-dot" aria-hidden="true"></span> Anchored</span>
+            <div class="preview-agent">
+              <span class="agent-avatar">RA</span>
+              <div><strong>RiskOps Autopilot</strong><small>Receipt 28f49029...16b7bf</small></div>
+            </div>
+            <span class="proof-state"><span class="status-dot" aria-hidden="true"></span> Casper anchored</span>
           </div>
-          <div class="preview-grid">
-            <div class="preview-primary">
-              <span class="data-label">Receipt integrity</span>
-              <strong>Verified</strong>
-              <code>235470a70605...cfac359</code>
+          <div class="preview-body">
+            <div class="preview-summary">
+              <div>
+                <span class="data-label">Receipt integrity</span>
+                <strong>Verified</strong>
+                <p>Canonical hash matches the recorded Casper Testnet proof.</p>
+              </div>
+              <span class="verified-mark" aria-hidden="true">&#10003;</span>
             </div>
-            <div class="preview-stat">
-              <span class="data-label">Policy</span>
-              <strong>ALLOW</strong>
+            <div class="preview-flow" aria-label="Receipt lifecycle">
+              <div class="flow-node is-complete"><span>01</span><strong>Intent</strong><small>Captured</small></div>
+              <i aria-hidden="true"></i>
+              <div class="flow-node is-complete"><span>02</span><strong>Policy</strong><small>Approved</small></div>
+              <i aria-hidden="true"></i>
+              <div class="flow-node is-complete"><span>03</span><strong>Tool call</strong><small>Recorded</small></div>
+              <i aria-hidden="true"></i>
+              <div class="flow-node is-complete"><span>04</span><strong>Casper</strong><small>Anchored</small></div>
             </div>
-            <div class="preview-stat">
-              <span class="data-label">Network</span>
-              <strong>Casper Testnet</strong>
+            <div class="preview-meta">
+              <div><span>Policy</span><strong>approved</strong></div>
+              <div><span>Risk score</span><strong>18 / 100</strong></div>
+              <div><span>Tool cost</span><strong>1.20 CSPR</strong></div>
+              <div><span>Network</span><strong>Casper Testnet</strong></div>
             </div>
           </div>
-          <span class="preview-link">Inspect receipt and proof <span aria-hidden="true">&rarr;</span></span>
+          <div class="preview-footer">
+            <code>235470a70605...cfac359</code>
+            <span>Inspect receipt <span aria-hidden="true">&rarr;</span></span>
+          </div>
         </a>
+
+        <div class="trust-strip" aria-label="Agent Blackbox guarantees">
+          <div><span>01</span><strong>Stack-agnostic</strong></div>
+          <div><span>02</span><strong>Policy-enforced</strong></div>
+          <div><span>03</span><strong>Audit-ready</strong></div>
+          <div><span>04</span><strong>Casper-anchored</strong></div>
+        </div>
       </section>
 
       <section class="problem-band">
         <div class="page-width problem-layout">
           <div>
             <p class="section-kicker">The missing accountability layer</p>
-            <h2>Agent logs tell a story.<br>Receipts prove it.</h2>
+            <h2>Agent logs tell a story. Receipts prove it.</h2>
           </div>
           <div class="problem-copy">
             <p>
