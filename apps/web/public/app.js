@@ -228,6 +228,42 @@ function loadExternalScript(src) {
   });
 }
 
+function waitForCsprClickReady(appId, timeoutMs = 30000) {
+  return new Promise((resolve, reject) => {
+    let settled = false;
+    const finish = (error) => {
+      if (settled) return;
+      settled = true;
+      window.clearInterval(poll);
+      window.clearTimeout(timeout);
+      window.removeEventListener("csprclick:loaded", onLoaded);
+      if (error) reject(error);
+      else resolve();
+    };
+    const isReady = () => {
+      const client = window.csprclick;
+      return Boolean(
+        client &&
+        typeof client.getActiveAccountAsync === "function" &&
+        (!client.appId || client.appId === appId)
+      );
+    };
+    const onLoaded = () => finish();
+    const poll = window.setInterval(() => {
+      if (isReady()) finish();
+    }, 250);
+    const timeout = window.setTimeout(() => {
+      const origin = window.location.origin;
+      finish(new Error(
+        `CSPR.click did not initialize for ${origin}. Add this exact origin to the app's allowed domain in console.cspr.build, then redeploy.`
+      ));
+    }, timeoutMs);
+
+    window.addEventListener("csprclick:loaded", onLoaded, { once: true });
+    if (isReady()) finish();
+  });
+}
+
 async function initializeCsprClick(config) {
   const connectButton = byId("connectWallet");
   if (!connectButton) return;
@@ -258,18 +294,11 @@ async function initializeCsprClick(config) {
       providers: ["casper-wallet", "ledger", "metamask-snap"]
     };
 
-    const loaded = new Promise((resolve, reject) => {
-      const timeout = window.setTimeout(
-        () => reject(new Error("CSPR.click initialization timed out.")),
-        15000
-      );
-      window.addEventListener("csprclick:loaded", () => {
-        window.clearTimeout(timeout);
-        resolve();
-      }, { once: true });
-    });
-    await loadExternalScript("https://cdn.cspr.click/ui/v1.12.0/csprclick-client-1.12.0.js");
-    await loaded;
+    const ready = waitForCsprClickReady(config.csprClickAppId);
+    await Promise.all([
+      loadExternalScript("https://cdn.cspr.click/ui/v1.12.0/csprclick-client-1.12.0.js"),
+      ready
+    ]);
     if (!window.csprclick) throw new Error("CSPR.click did not expose its browser client.");
 
     window.csprclick.on?.("csprclick:signed_in", (event) => updateWalletState(event.account ?? event));
